@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("formulario").addEventListener('submit',validarFormulario);
+});
+
+
+function validarFormulario(evento){
+    evento.preventDefault();
+    //letras del dni
+    var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+    //dato introducido por pantalla
+    var dato_introducido = document.getElementById('dni').value;
+    if(dato_introducido.length==9){
+        //alert("La longitud es correcta");
+        //array_dni=dato_introducido.split("-");
+        //dni=array_dni[0];
+        //letra=array_dni[1];        
+        
+        dni=dato_introducido.substr(0,8);
+        letra=dato_introducido.substr(8,1);
+
+        //alert(dni);
+        //alert(letra);
+        resto=dni%23;
+        if (letra==letras[resto]) {
+            alert("El Dni es correcto");
+        } else {
+            alert("El Dni es incorrecto o ha introducido valores incorrecto");
+        }
+
+
+        //alert(resto);
+    }
+    else{
+        alert("La longitud no es correcta");
+    }
+    
+    
+    //alert(dni)
+    return;
+}
+</script>
+
+
+</head>
+<body>
+
+<p>Introduce DNI con letra (8 digitos + letra)</p>
+
+    <form action="" id=formulario>
+
+        <p>
+            DNI:
+    <input type="text" name="dni" id="dni">
+    <input type="submit" value="Entrar">
+    
+        </p>
+
+    </form>
+
+<p>
+    dni=dato_introducido.substr(0,8);<br>
+    letra=dato_introducido.substr(8,1);<br>
+
+    resto=dni%23;<br>
+
+    if (letra==letras[resto]) {<br>
+        alert("El Dni es correcto");<br>
+    } <br>
+    else {<br>
+        alert("El Dni es incorrecto o ha introducido valores incorrecto");<br>
+    }<br>
+</p>
+
+    
+</body>
+</html>
